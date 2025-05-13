@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agenda-Medica</title>
+    <link rel="stylesheet" href="/CSS/reset.css" />
+    <link rel="stylesheet" href="/CSS/main.css" />
+    <link rel="stylesheet" href="/CSS/calendario.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="header-left">
+        <img
+          src="/IMGS/Logo_transp.svg"
+          alt="Logo do Sistema de Agendamento Médico"
+          class="logo"
+        />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="">Agendamento</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container-principal">
+      <aside class="filtros-lateral" style="display: none">
+        <h2>Filtros Auxiliares</h2>
+        <div id="filtros-agendamento">
+          <label for="filtro-especialidade-aux"
+            >Especialidade (Auxiliar):</label
+          >
+          <select id="filtro-especialidade-aux" name="filtro-especialidade-aux">
+            <option value="">Todas</option>
+          </select>
+          <button type="button" id="aplicar-filtros-aux">
+            Atualizar Opções do Formulário
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content-full">
+        <h2>Agendamento de Consultas</h2>
+        <p>Selecione uma data no calendário para iniciar o agendamento.</p>
+        <section id="agendamento-secao">
+          <div class="calendario-container">
+            <div class="wrapper">
+              <header>
+                <p class="current-date">Maio 2025</p>
+                <div class="icons">
+                  <img
+                    id="prev"
+                    class="material-symbols-rounded"
+                    src="/IMGS/chevron-left.svg"
+                    alt="Mês anterior"
+                    aria-label="Mês anterior"
+                  />
+                  <img
+                    id="next"
+                    class="material-symbols-rounded"
+                    src="/IMGS/chevron-right.svg"
+                    alt="Próximo mês"
+                    aria-label="Próximo mês"
+                  />
+                </div>
+              </header>
+              <div class="calendar">
+                <ul class="weeks">
+                  <li>D</li>
+                  <li>S</li>
+                  <li>T</li>
+                  <li>Q</li>
+                  <li>Q</li>
+                  <li>S</li>
+                  <li>S</li>
+                </ul>
+                <ul class="days"></ul>
+              </div>
+            </div>
+          </div>
+
+          <div
+            id="formulario-agendamento-direto-container"
+            class="form-container"
+            style="display: none"
+          >
+            <h3>
+              Nova Consulta para
+              <span id="data-selecionada-formulario">--/--/----</span>
+            </h3>
+            <form id="form-agendamento-direto">
+              <div>
+                <label for="agendamento-data">Data Selecionada:</label>
+                <input
+                  type="date"
+                  id="agendamento-data"
+                  name="agendamento-data"
+                  readonly
+                  required
+                />
+              </div>
+              <div>
+                <label for="agendamento-especialidade">Especialidade:</label>
+                <select
+                  id="agendamento-especialidade"
+                  name="agendamento-especialidade"
+                  required
+                >
+                  <option value="">Selecione a Especialidade</option>
+                </select>
+              </div>
+              <div>
+                <label for="agendamento-profissional"
+                  >Profissional (Médico):</label
+                >
+                <select
+                  id="agendamento-profissional"
+                  name="agendamento-profissional"
+                  required
+                >
+                  <option value="">Selecione a Especialidade Primeiro</option>
+                </select>
+              </div>
+              <div>
+                <label for="agendamento-horario">Horário Disponível:</label>
+                <select
+                  id="agendamento-horario"
+                  name="agendamento-horario"
+                  required
+                >
+                  <option value="">Selecione Especialidade e Médico</option>
+                </select>
+              </div>
+              <div>
+                <label for="agendamento-nome-paciente">Nome do Paciente:</label>
+                <input
+                  type="text"
+                  id="agendamento-nome-paciente"
+                  name="agendamento-nome-paciente"
+                  required
+                />
+              </div>
+              <div>
+                <label for="agendamento-convenio">Convênio do Paciente:</label>
+                <select
+                  id="agendamento-convenio"
+                  name="agendamento-convenio"
+                  required
+                >
+                  <option value="">Selecione o Convênio</option>
+                </select>
+              </div>
+              <button type="submit" class="btn-principal">
+                Cadastrar Consulta
+              </button>
+              <button
+                type="button"
+                id="btn-cancelar-agendamento-direto"
+                class="btn-secundario"
+              >
+                Cancelar
+              </button>
+            </form>
+            <div
+              id="agendamento-direto-mensagem"
+              class="mensagem"
+              style="display: none"
+            ></div>
+          </div>
+        </section>
+      </main>
+
+      <aside class="agendamentos-lista-lateral">
+        <h3>Consultas Agendadas</h3>
+        <div id="lista-agendamentos-container">
+          <ul id="lista-agendamentos">
+            <li>Nenhuma consulta para exibir.</li>
+          </ul>
+          <button type="button" id="atualizar-lista-agendamentos">
+            Atualizar Lista
+          </button>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <p>
+        &copy; <span id="ano-corrente"></span> Liga Contra o Câncer. Todos os
+        direitos reservados.
+      </p>
+    </footer>
+
+    <script src="/JAVASCRIPT/calendario.js"></script>
+    <script src="/JAVASCRIPT/main.js"></script>
+  </body>
+</html>
